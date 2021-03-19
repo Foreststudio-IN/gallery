@@ -27,7 +27,8 @@ app.post("/animals", async(req, res) => {
         const newAnimalEntry = await pool.query("INSERT INTO animals (link, type) VALUES($1, $2) RETURNING *", 
         [link, type]);
 
-        res.json(newAnimalEntry.rows[0]);                         
+        res.json(newAnimalEntry.rows[0]);
+        res.sendStatus(200);                      
     } catch (error) {
         console.error(error.message);
     }
@@ -39,6 +40,7 @@ app.get("/animals", async(req, res) => {
     try {
         const allAnimalEntries = await pool.query("SELECT * FROM animals");
         res.json(allAnimalEntries.rows);
+        res.sendStatus(200);   
     } catch (error) {
         console.error(error.message);
     }
@@ -53,6 +55,7 @@ app.get("/animals/type/:type", async(req,res)=> {
         [type]);
 
         res.json(animalEntry.rows);
+        res.sendStatus(200);   
     } catch (error) {
         console.error(error.message);
     }
@@ -64,6 +67,7 @@ app.get("/animals/type", async(req,res) => {
     try {
         const allAnimalTypes = await pool.query("SELECT DISTINCT type from animals");
         res.json(allAnimalTypes.rows);
+        res.sendStatus(200);   
     } catch (error) {
         console.error(error.message);
     }
@@ -79,6 +83,7 @@ app.put("/animals/:id", async(req,res)=> {
         [link, type, id]);
 
         res.json("Animals was updated.");
+        res.sendStatus(200);   
     } catch (error) {
         console.error(error.message);
     }
@@ -93,6 +98,7 @@ app.delete("/animals/:id", async(req,res) => {
         [id]);
 
         res.json("Specified entry has been deleted.");
+        res.sendStatus(200);   
     } catch (error) {
         console.error(error.message);
     }
@@ -101,6 +107,7 @@ app.delete("/animals/:id", async(req,res) => {
 //catch all method
 app.get("*", (req,res) => {
     res.sendFile(path.join(__dirname, "client/build/index.html"));
+    res.sendStatus(200);   
 });
 
 app.listen(PORT, () => {
