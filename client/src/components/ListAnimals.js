@@ -19,7 +19,7 @@ const ListAnimals = () => {
     const getAnimals = async () => {
         try {
             setLoading(true);
-            const response = await axios.get("http://localhost:5000/animals");
+            const response = await axios.get("/animals");
 
             setAnimalEntries(response.data);
             setLoading(false);
@@ -32,7 +32,7 @@ const ListAnimals = () => {
     const getTypes = async () => {
         try {
             setLoading(true);
-            const response = await axios.get("http://localhost:5000/animals/type");
+            const response = await axios.get("/animals/type");
 
             let result = response.data.map(item=> ({ label:item.type, value:item.type}));
 
@@ -51,7 +51,7 @@ const ListAnimals = () => {
     const submitForm = async(type) => {
         try {
             setLoading(true);
-            const response = await axios.get(`http://localhost:5000/animals/type/${type}`);
+            const response = await axios.get(`/animals/type/${type}`);
 
             setAnimalEntries(response.data);
             setLoading(false);

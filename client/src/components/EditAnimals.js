@@ -10,7 +10,7 @@ const EditAnimals = () => {
         e.preventDefault();
         try {
             const body = {link, type};
-            const response = await fetch(`http://localhost:5000/animals/${animalID}`, {
+            const response = await fetch(`/animals/${animalID}`, {
                 method: "PUT",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)

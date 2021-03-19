@@ -7,7 +7,7 @@ const DeleteModal = () => {
     const onSubmitForm = async(e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`http://localhost:5000/animals/${animalID}`, {
+            const response = await fetch(`/animals/${animalID}`, {
                 method: "DELETE",
             });
             if (response.status === 200) {

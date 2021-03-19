@@ -9,7 +9,7 @@ const AddAnimals = () => {
         e.preventDefault();
         try {
             const body = {link, type};
-            const response = await fetch("http://localhost:5000/animals", {
+            const response = await fetch("/animals", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
