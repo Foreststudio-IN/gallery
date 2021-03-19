@@ -55,7 +55,6 @@ const ListAnimals = () => {
 
             setAnimalEntries(response.data);
             setLoading(false);
-
         } catch (error) {
             console.error(error.message);
         }
@@ -73,6 +72,9 @@ const ListAnimals = () => {
         setPageNumber(0);
         submitForm(e.value);
     }
+
+    console.log(pageNumber);
+
     const currentAnimalEntries = animalEntries.slice(pagesVisited, pagesVisited + animalEntriesPerPage);
     const pageCount = Math.ceil(animalEntries.length/animalEntriesPerPage);
 
@@ -91,6 +93,7 @@ const ListAnimals = () => {
                 marginPagesDisplayed={1}
                 pageCount={pageCount}
                 onPageChange={changePage}
+                forcePage={pageNumber}
                 containerClassName={"pagination-btn"}
                 disabledClassName={'pagination-disabled'}
                 activeClassName={'pagination-active'}
