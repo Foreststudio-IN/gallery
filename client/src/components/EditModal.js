@@ -9,7 +9,7 @@ const EditModal = () => {
                 <div className="modal-content">
 
                     <div className="modal-header">
-                        <h4 className="modal-title">Edit an Animal Entry</h4>
+                        <h4 className="modal-title">Edit an Entry</h4>
                         <button type="button" className="close" data-dismiss="modal">&times;</button>
                     </div>
 

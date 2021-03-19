@@ -26,7 +26,7 @@ const DeleteModal = () => {
                 <div className="modal-content">
 
                     <div className="modal-header">
-                        <h4 className="modal-title">Delete an Animal Entry</h4>
+                        <h4 className="modal-title">Delete an Entry</h4>
                         <button type="button" className="close" data-dismiss="modal">&times;</button>
                     </div>
 
