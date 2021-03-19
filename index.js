@@ -5,8 +5,6 @@ const pool = require("./db");
 const path = require("path");
 const PORT = process.env.PORT || 5000;
 
-console.log("DATABASE_URL", process.env.DATABASE_URL);
-
 //process.env.PORT
 //process.env.NODE_ENV => production or undefined
 
