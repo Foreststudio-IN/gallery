@@ -18,6 +18,7 @@ const AddAnimals = () => {
                 alert('Successfully added entry');
                 setLink("");
                 setType("");
+                window.location = "/";
             }
 
         } catch (error) {

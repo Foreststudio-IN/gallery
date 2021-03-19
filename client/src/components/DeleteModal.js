@@ -12,6 +12,7 @@ const DeleteModal = () => {
             });
             if (response.status === 200) {
                 alert('Successfully deleted entry');
+                window.location = "/";
             }
         } catch (error) {
             alert('Failed to delete entry. Check console for error message.');

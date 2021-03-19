@@ -27,8 +27,7 @@ app.post("/animals", async(req, res) => {
         const newAnimalEntry = await pool.query("INSERT INTO animals (link, type) VALUES($1, $2) RETURNING *", 
         [link, type]);
 
-        res.json(newAnimalEntry.rows[0]);
-        res.sendStatus(200);                      
+        res.json(newAnimalEntry.rows[0]);                    
     } catch (error) {
         console.error(error.message);
     }
@@ -39,8 +38,7 @@ app.post("/animals", async(req, res) => {
 app.get("/animals", async(req, res) => {
     try {
         const allAnimalEntries = await pool.query("SELECT * FROM animals");
-        res.json(allAnimalEntries.rows);
-        res.sendStatus(200);   
+        res.json(allAnimalEntries.rows); 
     } catch (error) {
         console.error(error.message);
     }
@@ -54,8 +52,7 @@ app.get("/animals/type/:type", async(req,res)=> {
         const animalEntry = await pool.query("SELECT * FROM animals WHERE type = $1", 
         [type]);
 
-        res.json(animalEntry.rows);
-        res.sendStatus(200);   
+        res.json(animalEntry.rows);  
     } catch (error) {
         console.error(error.message);
     }
@@ -66,8 +63,7 @@ app.get("/animals/type/:type", async(req,res)=> {
 app.get("/animals/type", async(req,res) => {
     try {
         const allAnimalTypes = await pool.query("SELECT DISTINCT type from animals");
-        res.json(allAnimalTypes.rows);
-        res.sendStatus(200);   
+        res.json(allAnimalTypes.rows);  
     } catch (error) {
         console.error(error.message);
     }
@@ -82,8 +78,7 @@ app.put("/animals/:id", async(req,res)=> {
         const updateAnimalEntry = await pool.query("UPDATE animals SET link = $1, type = $2 WHERE animal_id = $3", 
         [link, type, id]);
 
-        res.json("Animals was updated.");
-        res.sendStatus(200);   
+        res.json("Animals was updated.");  
     } catch (error) {
         console.error(error.message);
     }
@@ -98,7 +93,6 @@ app.delete("/animals/:id", async(req,res) => {
         [id]);
 
         res.json("Specified entry has been deleted.");
-        res.sendStatus(200);   
     } catch (error) {
         console.error(error.message);
     }
@@ -107,7 +101,6 @@ app.delete("/animals/:id", async(req,res) => {
 //catch all method
 app.get("*", (req,res) => {
     res.sendFile(path.join(__dirname, "client/build/index.html"));
-    res.sendStatus(200);   
 });
 
 app.listen(PORT, () => {

@@ -20,6 +20,7 @@ const EditAnimals = () => {
                 setAnimalID("0");
                 setLink("");
                 setType("");
+                window.location = "/";
             }
         } catch (error) {
             alert('Failed to edit entry. Check console for error message.');
