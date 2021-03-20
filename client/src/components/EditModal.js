@@ -1,10 +1,11 @@
 import React from 'react';
 import EditAnimals from './EditAnimals';
+import DeleteEntry from './DeleteEntry';
 
-const EditModal = () => {
+const EditModal = ({animal_id ,media, type}) => {
 
     return (
-        <div className="modal fade" id="editModal">
+        <div className="modal fade" id={animal_id}>
             <div className="modal-dialog">
                 <div className="modal-content">
 
@@ -14,11 +15,13 @@ const EditModal = () => {
                     </div>
 
                     <div className="modal-body">
-                        <EditAnimals/>
+                        <img className="pl-3 mb-2" src={media} width="450" height="450" alt={animal_id}/>
+                        <EditAnimals animal_id={animal_id} media={media} oldtype={type}/>
                     </div>
 
-                <div className="modal-footer">
-                    <button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
+                <div className="d-flex justify-content-between modal-footer">
+                    <DeleteEntry animal_ID={animal_id}/>
+                    <button type="button" className="btn btn-primary" data-dismiss="modal">Close</button>
                 </div>
 
                 </div>

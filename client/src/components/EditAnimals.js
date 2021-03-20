@@ -1,23 +1,21 @@
-import React, {Fragment, useState} from 'react';
+import React, {Fragment, useState, useEffect} from 'react';
 
-const EditAnimals = () => {
+const EditAnimals = ({animal_id,media,oldtype}) => {
 
     const [link, setLink] = useState("");
     const [type, setType] = useState("");
-    const [animalID, setAnimalID] = useState("0");
 
     const onSubmitForm = async(e) => {
         e.preventDefault();
         try {
             const body = {link, type};
-            const response = await fetch(`/animals/${animalID}`, {
+            const response = await fetch(`/animals/${animal_id}`, {
                 method: "PUT",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
             });
             if (response.status === 200) {
                 alert('Successfully edited entry');
-                setAnimalID("0");
                 setLink("");
                 setType("");
                 window.location = "/";
@@ -28,13 +26,18 @@ const EditAnimals = () => {
         }
     }
 
+    useEffect(()=> {
+        setLink(media);
+        setType(oldtype);
+    }, [media,oldtype]);
+
+
     return (
         <Fragment>
             <form className = "d-flex flex-column" onSubmit={onSubmitForm}>
-                <input type = "text" required className = "form-control m-1" placeholder="Animal ID" onChange={e => setAnimalID(e.target.value)}/>
-                <input type = "text" required className = "form-control m-1" placeholder="Link" value={link} onChange={e => setLink(e.target.value)}/>
-                <input type = "text" required className = "form-control m-1" placeholder="Type" value={type} onChange={e => setType(e.target.value.toLowerCase())}/>
-                <button className = "btn btn-success m-1">Add</button>
+                <input type = "text" required className = "form-control m-1" value={link} onChange={e => setLink(e.target.value)}/>
+                <input type = "text" required className = "form-control m-1" value={type} onChange={e => setType(e.target.value.toLowerCase())}/>
+                <button className = "btn btn-success m-1">Edit</button>
             </form>
         </Fragment>
     )

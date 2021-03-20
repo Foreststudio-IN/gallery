@@ -43,15 +43,9 @@
   right: 10px;
 }
 
-.fixed-edit-btn {
-  position:fixed;
-  top: 100px;
-  right:10px;
-}
-
 .fixed-delete-btn {
   position:fixed;
-  top:190px;
+  top: 100px;
   right:10px;
 }
 

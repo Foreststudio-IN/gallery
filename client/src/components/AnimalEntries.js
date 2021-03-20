@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import EditModal from './EditModal';
+
 
 const AnimalEntries = ({ animalEntries, loading}) => {
     if (loading) {
@@ -8,9 +10,12 @@ const AnimalEntries = ({ animalEntries, loading}) => {
     return (
         <div>
             {animalEntries.map((animalEntry) => (
-                <a href={animalEntry.link} target="_blank" rel="noreferrer">
-                    <img className="m-2 border border-dark" src={animalEntry.link} width="250" height="250" alt={animalEntry.animal_id}/>
-                </a>
+                <Fragment>
+                    <button className="btn bg-transparent mx-0.5" data-toggle="modal" data-target={'#' + animalEntry.animal_id}>
+                        <img  className="border-dark border" src={animalEntry.link} width="250" height="250" alt={animalEntry.animal_id}/>
+                    </button>
+                    <EditModal animal_id={animalEntry.animal_id} media={animalEntry.link} type={animalEntry.type}/>
+                </Fragment>
             ))}
         </div>
     )
